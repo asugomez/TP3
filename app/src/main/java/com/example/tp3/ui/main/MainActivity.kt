@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp3.R
 import com.example.tp3.data.DataProvider.connexion
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var BtnOK: Button? = null
     private var Mdp: EditText? = null
 
+    private val viewModel by viewModels<MainViewModel>()
+
     private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
@@ -34,7 +37,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initializeVariables()
 
+
+
+        BtnOK!!.setOnClickListener(this)
+
+
+
+        val l=sp.getString("login","null")
+        Pseudo?.setText(l.toString())
+    }
+
+    fun initializeVariables(){
         sp = PreferenceManager.getDefaultSharedPreferences(this)
         editor = sp.edit()
 
@@ -43,12 +58,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         BtnOK = findViewById(R.id.ButtonOk)
         Mdp = findViewById(R.id.editPass)
 
-        BtnOK!!.setOnClickListener(this)
-
-
-
-        val l=sp.getString("login","null")
-        Pseudo?.setText(l.toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

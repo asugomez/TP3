@@ -40,8 +40,8 @@
     <list default="true" id="2ed7becb-da25-4328-ae4f-3c7fa14ede4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/LocalDataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/LocalDataProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ItemDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ItemDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/TodoRoomDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/TodoRoomDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/UserDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/RemoteDataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/RemoteDataProvider.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +95,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="test" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,6 +113,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -224,6 +225,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1957" y="-302" key="#Inspections" timestamp="1623421227420">
+      <screen x="1366" y="-466" width="1920" height="1055" />
+    </state>
+    <state x="1957" y="-302" key="#Inspections/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623421227420" />
     <state x="1912" y="-22" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1623416182867">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
@@ -288,5 +293,13 @@
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
     <state x="1789" y="-232" key="MergeDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1622992715958" />
+    <state x="1832" y="-349" key="SettingsEditor" timestamp="1623417783796">
+      <screen x="1366" y="-466" width="1920" height="1055" />
+    </state>
+    <state x="1832" y="-349" key="SettingsEditor/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623417783796" />
+    <state x="1946" y="-370" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1623425187601">
+      <screen x="1366" y="-466" width="1920" height="1055" />
+    </state>
+    <state x="1946" y="-370" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623425187601" />
   </component>
 </project>

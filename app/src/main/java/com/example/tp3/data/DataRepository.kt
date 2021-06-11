@@ -9,15 +9,15 @@ class DataRepository(
     private val remoteDataSource: RemoteDataProvider
 ) {
 
-    suspend fun getLists(): List<com.example.tp3.data.model.List> {
+    suspend fun getLists(hash: String): List<com.example.tp3.data.model.List> {
         return try {
 
-            remoteDataSource.getPosts().also {
+            remoteDataSource.getListsFromApi(hash).also {
                 localDataSource.saveOrUpdate(it)
             }
 
         } catch (e: Exception) {
-            localDataSource.getPosts()
+            localDataSource.getLists()
         }
     }
 
