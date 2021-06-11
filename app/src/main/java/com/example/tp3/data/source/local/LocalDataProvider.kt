@@ -11,12 +11,14 @@ class LocalDataProvider(
 ) {
 
     private val roomDatabase =
-        Room.databaseBuilder(application, TodoRoomDatabase::class.java, "room-database").build()
+        Room.databaseBuilder(application, TodoRoomDatabase::class.java, "todo-api").build()
 
-
+    // get an instance of the DAO
+    private val userDao = roomDatabase.userDao()
     private val listDao = roomDatabase.listDao()
+    private val itemDao = roomDatabase.itemDao()
 
-
-    suspend fun getPosts() = postDao.getPosts()
-    suspend fun saveOrUpdate(posts: List<Post>) = postDao.saveOrUpdate(posts)
+    //  you can use the methods from the DAO instance to interact with the database:
+    suspend fun getLists(hash: String)= listDao.getLists()
+    suspend fun saveOrUpdate(lists: List<com.example.tp3.data.model.List>) = listDao.saveOrUpdate(lists)
 }

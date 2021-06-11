@@ -26,17 +26,39 @@ class RemoteDataProvider {
 
     private val service = retrofit.create(TodoAPI::class.java)
 
+    ////////////// USER //////////////
     suspend fun connexion(pseudo: String, pass: String): String{
         return service.connexion(pseudo, pass).hash
     }
 
-    suspend fun getListsFromApi(hash: String): List<com.example.tp3.data.model.List>{
-        return service.getLists(hash).lists
+    suspend fun hash2id(hash: String) {
+        //return service.hash2id(hash)
+        // todo
     }
 
-    suspend fun createList(id_user: Int, label: String, hash:String): com.example.tp3.data.model.List{
-        return service.createList(id_user, label, hash)
+    suspend fun getList(id: Int, hash:String): com.example.tp3.data.model.List{
+        return service.getList(id, hash)
     }
+
+    suspend fun getListsUser(hash:String): List<com.example.tp3.data.model.List>{
+        return service.getListsUser(hash).lists
+    }
+
+    suspend fun mkListUser(id_user: Int, label: String, hash:String): com.example.tp3.data.model.List{
+        return service.mkListUser(id_user, label, hash)
+    }
+
+    suspend fun rmListUser(id_user: Int, id_list: Int, hash: String): Int{
+        return service.rmListUser(id_user, id_list, hash)
+    }
+
+    suspend fun chgListLabel(id_user: Int, id_list: Int, label: String, hash: String){
+        return service.chgListLabel(id_user, id_list, label, hash)
+    }
+
+    ////////////// ITEM //////////////
+
+
     suspend fun getItemsOfAList(id_list: Int, hash: String): List<Item> {
         return service.getItemsOfAList(id_list, hash).items
     }

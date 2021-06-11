@@ -11,12 +11,13 @@ Data access objects (DAOs) that provide methods that your app can use to query, 
  */
 @Dao
 interface ItemDao {
+    ////////////// ITEM //////////////
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveOrUpdate(items: List<Item>)
+    suspend fun saveOrUpdateItems(items: List<Item>)
 
-    @Query("SELECT * FROM ITEM")
+    @Query("SELECT * FROM items")
     suspend fun getItems(): List<Item>
 
 }

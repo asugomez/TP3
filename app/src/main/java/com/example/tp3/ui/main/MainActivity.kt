@@ -34,7 +34,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initializeVariables()
 
+
+
+        BtnOK!!.setOnClickListener(this)
+
+
+
+        val l=sp.getString("login","null")
+        Pseudo?.setText(l.toString())
+    }
+
+    fun initializeVariables(){
         sp = PreferenceManager.getDefaultSharedPreferences(this)
         editor = sp.edit()
 
@@ -43,12 +55,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         BtnOK = findViewById(R.id.ButtonOk)
         Mdp = findViewById(R.id.editPass)
 
-        BtnOK!!.setOnClickListener(this)
-
-
-
-        val l=sp.getString("login","null")
-        Pseudo?.setText(l.toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

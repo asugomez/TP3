@@ -7,7 +7,6 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Item(
-    // user, mdp, lists of the user
     @PrimaryKey val id: Int,
     @ColumnInfo(name="idList") val id_list: Int, //@UniqueKey
     @ColumnInfo(name="label") val label: String,

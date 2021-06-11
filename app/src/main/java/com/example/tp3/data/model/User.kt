@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class User(
-    // user, mdp, lists of the user
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "pseudo") val pseudo: String,
     @ColumnInfo(name = "pass") val pass: String,

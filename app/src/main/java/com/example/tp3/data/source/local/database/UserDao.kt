@@ -10,24 +10,31 @@ Data access objects (DAOs) that provide methods that your app can use to query, 
 @Dao
 interface UserDao {
 
+    ////////////// USER //////////////
+    @Query("SELECT hash FROM users " +
+            "WHERE pseudo=:pseudo AND pass=:password")
+    suspend fun connexion(pseudo: String, password: String): String
+    // return a hash
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveOrUpdate(listes: List<com.example.tp3.data.model.List>)
+    @Query("SELECT id FROM users " +
+            "WHERE hash=:hash")
+    suspend fun hash2id(hash:String): Int
 
-    @Query("SELECT * FROM user")
+    @Query("SELECT * " +
+            "FROM users")
     suspend fun getUsers(): List<User>
 
-    @Query("SELECT * FROM user WHERE id IN (:userIds)")
-    fun loadAllByIds(userIds: IntArray): List<User>
-
-    @Query("SELECT * FROM user WHERE first_name LIKE :first AND " +
-            "last_name LIKE :last LIMIT 1")
-    fun findByName(first: String, last: String): User
+    @Query("INSERT INTO users(pseudo,pass)" +
+            "VALUES(:pseudo, :pass)")
+    suspend fun mkUser(pseudo: String, pass: String): User
 
     @Insert
     fun insertAll(vararg users: User)
 
     @Delete
     fun delete(user: User)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveOrUpdateUsers(users: List<User>)
 
 }

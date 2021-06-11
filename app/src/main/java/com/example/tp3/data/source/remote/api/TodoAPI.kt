@@ -5,26 +5,52 @@ import com.example.tp3.data.model.List
 import retrofit2.http.*
 
 interface TodoAPI {
-    //connexion
-    // l'API renvoie un hash
+
+    ////////////// USER //////////////
+
+    // connexion: l'API renvoie un hash
     @POST("authenticate")
     suspend fun connexion(@Query("user") user: String,
                           @Query("password") password: String) : Login
+    //todo: change login to user and hash
+
+    @GET("/users")
+    suspend fun getUsers(@Header("hash") hash: String): UserResponse
+
+    @POST("/users")
+    suspend fun mkUser(@Query("pseudo") pseudo: String,
+                        @Query("pass") pass: String): User
+
+    ////////////// LIST //////////////
+
+
+    @GET("lists/{id}")
+    suspend fun getList(@Path("id")id: Int,
+                        @Header("hash")hash: String): List
 
     @GET("lists")
-    suspend fun getLists(@Header("hash")hash: String): ListResponse
+    suspend fun getListsUser(@Header("hash")hash: String): ListResponse
 
     // creation of a new list
     @POST("users/{id}/lists")
-    suspend fun createList(@Path("id")id: Int,
+    suspend fun mkListUser(@Path("id")id: Int,
                            @Query("label")label:String,
                            @Header("hash")hash: String): List
 
-    //creation of a new list from a connected user
-    //@POST("lists?label={label}")
-    //suspend fun createList
+    @DELETE("users/{idUser}/lists/{idList}")
+    suspend fun rmListUser(@Path("idUser") id_user: Int,
+                        @Path("idList") id_list: Int,
+                        @Header("hash") hash: String): Int
 
-    //
+    @PUT("/users/{idUser}/lists/{idList}")
+    suspend fun chgListLabel(@Path("idUser") id_user: Int,
+                            @Path("idList") id_list: Int,
+                            @Query("label") txt_label: String,
+                            @Header("hash") hash: String)
+    //todo: verify what it returns
+
+    ////////////// ITEM //////////////
+
     @GET("lists/{id_list}/items")
     suspend fun getItemsOfAList(@Path("id_list")id_list: Int,
                                 @Header("hash")hash: String): ItemResponse
