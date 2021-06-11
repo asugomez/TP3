@@ -63,10 +63,27 @@ class RemoteDataProvider {
         return service.getItemsOfAList(id_list, hash).items
     }
 
-    suspend fun cocherDecochetItem(id_list: Int, id_item: Int, check: Int, hash: String){
-        return service.cocherDecocherItem(id_list, id_item, check, hash)
+    suspend fun getItem(id_item: Int, id_list: Int, hash: String): Item{
+        return service.getItem(id_item, id_list, hash)
     }
-    suspend fun createItem(id_list: Int, label: String, hash: String): Item {
-        return service.createItem(id_list,label, hash)
+
+    suspend fun mkItem(id_list: Int, label: String, hash: String): Item {
+        return service.mkItem(id_list,label, hash)
+    }
+
+    suspend fun rmItem(id_list: Int, id_item: Int, hash: String): Int{
+        return service.rmItem(id_list, id_item, hash)
+    }
+
+    suspend fun chgItemLabel(id_list: Int, id_item: Int, label: String, hash: String){
+        return service.chgItemLabel(id_list, id_item, label, hash)
+    }
+
+    suspend fun chgItemUrl(id_list: Int, id_item: Int, url: String, hash: String){
+        return service.chgItemUrl(id_list, id_item, url, hash)
+    }
+
+    suspend fun checkItem(id_list: Int, id_item: Int, check: Int, hash: String){
+        return service.checkItem(id_list, id_item, check, hash)
     }
 }

@@ -39,14 +39,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2ed7becb-da25-4328-ae4f-3c7fa14ede4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/DataRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/DataRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/model/Item.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/model/Item.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/model/List.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/model/List.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/model/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/model/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/LocalDataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/LocalDataProvider.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ItemDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ItemDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ListDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ListDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/UserDao.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/RemoteDataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/RemoteDataProvider.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/api/TodoAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/api/TodoAPI.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainActivity.kt" afterDir="false" />
@@ -305,5 +298,9 @@
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
     <state x="1832" y="-349" key="SettingsEditor/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623417783796" />
+    <state x="1946" y="-370" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1623425187601">
+      <screen x="1366" y="-466" width="1920" height="1055" />
+    </state>
+    <state x="1946" y="-370" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623425187601" />
   </component>
 </project>

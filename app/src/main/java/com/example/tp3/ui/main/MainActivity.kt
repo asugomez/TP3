@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp3.R
 import com.example.tp3.data.DataProvider.connexion
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var Pseudo: EditText? = null
     private var BtnOK: Button? = null
     private var Mdp: EditText? = null
+
+    private val viewModel by viewModels<MainViewModel>()
 
     private val activityScope = CoroutineScope(
         SupervisorJob()
