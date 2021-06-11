@@ -32,14 +32,22 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/test" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed7becb-da25-4328-ae4f-3c7fa14ede4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CR_TP2_PMR.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_ktx_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_ktx_2_2_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_ktx_2_2_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_android_1_3_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_1_3_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/TP1.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/TP1.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/DataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/DataProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/api/TodoAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/source/remote/api/TodoAPI.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +122,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.tp1.data.source.remote" />
       <recent name="com.example.tp1.ui.main" />
       <recent name="com.example.tp1.adapter" />
     </key>
@@ -207,7 +216,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/test" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -221,18 +230,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1912" y="-22" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1622991907960">
+    <state x="1912" y="-22" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1623416182867">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state x="1912" y="-22" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1622991907960" />
+    <state x="1912" y="-22" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623416182867" />
     <state x="2059" y="-213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1623036856990">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
     <state x="2059" y="-213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623036856990" />
-    <state x="2114" y="-155" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1622991871553">
+    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1623416228842">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state x="2114" y="-155" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1622991871553" />
+    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623416228842" />
     <state x="1909" y="-205" key="AndroidCreateResourceFileDialog" timestamp="1623056595358">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
