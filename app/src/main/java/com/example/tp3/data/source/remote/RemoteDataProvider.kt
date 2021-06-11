@@ -36,6 +36,8 @@ class RemoteDataProvider {
         // todo
     }
 
+    ////////////// LIST //////////////
+
     suspend fun getList(id: Int, hash:String): com.example.tp3.data.model.List{
         return service.getList(id, hash)
     }

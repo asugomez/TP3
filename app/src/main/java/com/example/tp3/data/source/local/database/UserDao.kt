@@ -29,10 +29,10 @@ interface UserDao {
     suspend fun mkUser(pseudo: String, pass: String): User
 
     @Insert
-    fun insertAll(vararg users: User)
+    fun insertAllUsers(vararg users: User)
 
     @Delete
-    fun delete(user: User)
+    fun deleteUser(user: User)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveOrUpdateUsers(users: List<User>)
