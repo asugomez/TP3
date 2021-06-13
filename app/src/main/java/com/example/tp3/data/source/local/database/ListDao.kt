@@ -33,7 +33,7 @@ interface ListDao {
 
     @Query("INSERT INTO lists(idUser, label) " +
             "VALUES(:id_user, :label)")
-    suspend fun mkListUser(id_user: Int, label: String, hash:String): com.example.tp3.data.model.List
+    suspend fun mkListUser(id_user: Int, label: String): com.example.tp3.data.model.List
 
     @Query("DELETE FROM lists WHERE id=:idList" +
             "")

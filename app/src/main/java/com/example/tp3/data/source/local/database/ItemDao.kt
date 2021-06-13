@@ -24,12 +24,13 @@ interface ItemDao {
 
     @Query("SELECT * FROM items" +
             "WHERE id=:idItem")
-    suspend fun getItem(idItem: String): Item
+    suspend fun getItem(idItem: Int): Item
 
     @Query("INSERT INTO items(idList,label,url) " +
             "VALUES(:idList, :label,:url)")
-    suspend fun mkItem(idList: Int, label: String, url: String)
+    suspend fun mkItem(idList: Int, label: String, url: String): Item
     //todo: case url is null
+    // todo: what it returns
 
     @Query("DELETE FROM items " +
             "WHERE id=:idItem AND idList=:idList")

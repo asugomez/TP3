@@ -37,13 +37,13 @@ class LocalDataProvider(
 
     ////////////// LIST //////////////
 
-    suspend fun getLists() = listDao.getLists()
+    suspend fun getLists() = listDao.getLists().lists
 
     suspend fun getList(idList: Int) = listDao.getList(idList)
 
-    suspend fun getListsUser(hash: String) = listDao.getListsUser(hash)
+    suspend fun getListsUser(hash: String) = listDao.getListsUser(hash).lists
 
-    suspend fun mkListUser(id_user: Int, label: String, hash:String) = listDao.mkListUser(id_user, label, hash)
+    suspend fun mkListUser(id_user: Int, label: String) = listDao.mkListUser(id_user, label)
 
     suspend fun rmListUser(idList: Int) = listDao.rmListUser(idList)
 
@@ -55,11 +55,11 @@ class LocalDataProvider(
 
     suspend fun getItems() = itemDao.getItems()
 
-    suspend fun getItemsOfAList(idList: Int) = itemDao.getItemsOfAList(idList)
+    suspend fun getItemsOfAList(idList: Int) = itemDao.getItemsOfAList(idList).items
 
-    suspend fun getItem(idItem: String) = itemDao.getItem(idItem)
+    suspend fun getItem(idItem: Int) = itemDao.getItem(idItem)
 
-    suspend fun mkItem(idList: Int, label: String, url: String) = itemDao.mkItem(idList, label, url)
+    suspend fun mkItem(idList: Int, label: String, url: String=" ") = itemDao.mkItem(idList, label, url)
 
     suspend fun rmItemList(idItem: Int, idList: Int) = itemDao.rmItemList(idItem, idList)
 

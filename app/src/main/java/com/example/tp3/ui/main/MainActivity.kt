@@ -14,10 +14,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp3.R
 import com.example.tp3.data.DataProvider.connexion
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
+import com.example.tp3.ui.main.viewmodel.UserViewModel
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -27,24 +24,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var BtnOK: Button? = null
     private var Mdp: EditText? = null
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val userViewModel by viewModels<UserViewModel>()
 
-    private val activityScope = CoroutineScope(
+    /*private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
-    )
+    )*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeVariables()
-
-
-
         BtnOK!!.setOnClickListener(this)
 
-
-
+        
         val l=sp.getString("login","null")
         Pseudo?.setText(l.toString())
     }

@@ -32,14 +32,18 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/localdatabase" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed7becb-da25-4328-ae4f-3c7fa14ede4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/DataRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/UserRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ChoixListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ChoixListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/viewmodel/UserViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ShowListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ShowListActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +119,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.tp3.ui.main.viewmodel" />
       <recent name="com.example.tp1.data.source.remote" />
       <recent name="com.example.tp1.ui.main" />
       <recent name="com.example.tp1.adapter" />
@@ -209,7 +214,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="origin/localdatabase" />
                       </list>
                     </value>
                   </entry>
@@ -235,10 +240,10 @@
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
     <state x="2059" y="-213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623416795873" />
-    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1623416228842">
+    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1623609356982">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623416228842" />
+    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623609356982" />
     <state x="1909" y="-205" key="AndroidCreateResourceFileDialog" timestamp="1623056595358">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
@@ -299,5 +304,13 @@
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
     <state x="1946" y="-370" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623425187601" />
+    <state x="1366" y="-463" width="1920" height="1052" key="dock-window-1" timestamp="1623605363566">
+      <screen x="1366" y="-466" width="1920" height="1055" />
+    </state>
+    <state x="1366" y="-463" width="1920" height="1052" key="dock-window-1/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623605363566" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1623605294039">
+      <screen x="1366" y="-466" width="1920" height="1055" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623605294039" />
   </component>
 </project>

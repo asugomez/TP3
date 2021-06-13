@@ -5,12 +5,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp3.R
 import com.example.tp3.data.model.Item
 import com.example.tp3.ui.main.adapter.AdapterItem
+import com.example.tp3.ui.main.viewmodel.ItemViewModel
+import com.example.tp3.ui.main.viewmodel.UserViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -25,10 +28,11 @@ class ShowListActivity : AppCompatActivity(){
     private var b: Button? = null
     private var t: EditText? = null
 
-    private val activityScope = CoroutineScope(
+    /*private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
-    )
+    )*/
+    private val itemViewModel by viewModels<ItemViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

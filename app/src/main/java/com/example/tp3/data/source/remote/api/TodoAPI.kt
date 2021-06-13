@@ -61,16 +61,11 @@ interface TodoAPI {
                         @Path("idItem") id_item: Int,
                         @Header("hash") hash: String): Item
 
-    // cocher un item
-    @PUT("lists/{id_list}/items/{id_item}?check=1")
-    suspend fun cocherItem(@Path("id_list") id_list: Int,
-                           @Path("id_item") id_item: Int,
-                           @Header("hash")hash: String)
-
     //create un item
     @POST("lists/{id_list}/items")
     suspend fun mkItem(@Path("id_list")id_list: Int,
                            @Query("label") label: String,
+                            @Query("url") url: String? = null,
                            @Header("hash")hash: String): Item
 
     @DELETE("lists/{idList}/items/{idItem}")
