@@ -38,13 +38,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeVariables()
-
-
-
         BtnOK!!.setOnClickListener(this)
 
-
-
+        
         val l=sp.getString("login","null")
         Pseudo?.setText(l.toString())
     }
