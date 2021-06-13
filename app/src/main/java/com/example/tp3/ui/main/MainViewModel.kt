@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
 
-    private val postRepository by lazy { DataRepository.newInstance(application) }
+    private val dataRepository by lazy { DataRepository.newInstance(application) }
 
     val posts = MutableLiveData<ViewState>()
 
@@ -30,7 +30,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
     sealed class ViewState {
         object Loading : ViewState()
-        data class Content(val posts: List<com.example.tp3.data.model.List>) : ViewState()
+        data class Content(val lists: List<com.example.tp3.data.model.List>) : ViewState()
         data class Error(val message: String) : ViewState()
     }
 }
