@@ -1,6 +1,7 @@
 package com.example.tp3.data.source.remote
 
 import com.example.tp3.data.model.Item
+import com.example.tp3.data.model.User
 import com.example.tp3.data.source.remote.api.TodoAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,6 +37,14 @@ class RemoteDataProvider {
         // todo
     }
 
+    suspend fun getUsers(hash: String): List<User>{
+        return service.getUsers(hash).users
+    }
+
+    suspend fun mkUser(pseudo: String, pass: String, hash: String): User{
+        return service.mkUser(pseudo, pass, hash)
+    }
+
     ////////////// LIST //////////////
 
     suspend fun getList(id: Int, hash:String): com.example.tp3.data.model.List{
@@ -69,8 +78,8 @@ class RemoteDataProvider {
         return service.getItem(id_item, id_list, hash)
     }
 
-    suspend fun mkItem(id_list: Int, label: String, hash: String): Item {
-        return service.mkItem(id_list,label, hash)
+    suspend fun mkItem(id_list: Int, label: String, url: String? = null, hash: String): Item {
+        return service.mkItem(id_list,label, url, hash)
     }
 
     suspend fun rmItem(id_list: Int, id_item: Int, hash: String): Int{
