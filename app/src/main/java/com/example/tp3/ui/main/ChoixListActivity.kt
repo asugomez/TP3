@@ -6,13 +6,16 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp3.R
 import com.example.tp3.data.DataProvider.createList
-import com.example.tp3.data.DataRepository
+import com.example.tp3.data.UserRepository
 import com.example.tp3.ui.main.adapter.AdapterList
+import com.example.tp3.ui.main.viewmodel.ListViewModel
+import com.example.tp3.ui.main.viewmodel.UserViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -30,10 +33,11 @@ class ChoixListActivity : AppCompatActivity(){
     private var lists: MutableList<com.example.tp3.data.model.List>? = null
     private var change: Intent? = null
 
-    private val activityScope = CoroutineScope(
+    private val listViewModel by viewModels<ListViewModel>()
+    /*private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
-    )
+    )*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -92,7 +96,7 @@ class ChoixListActivity : AppCompatActivity(){
                         val newListName = t?.text.toString()
                         Toast.makeText(this@ChoixListActivity, newListName, Toast.LENGTH_SHORT).show()
                         // add the new list
-                        val new_list = DataRepository.createList(id_user_int, newListName, hash)
+                        val new_list = UserRepository.createList(id_user_int, newListName, hash)
                         val listReady : List<com.example.tp3.data.model.List> = listOf(new_list)
                         adapter!!.addData(listReady)
                         //val lists = DataProvider.getListsFromApi(hash)

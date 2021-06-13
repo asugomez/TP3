@@ -39,12 +39,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2ed7becb-da25-4328-ae4f-3c7fa14ede4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/DataRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/DataRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/LocalDataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/LocalDataProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ItemDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ItemDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ListDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/local/database/ListDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/RemoteDataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/RemoteDataProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/api/TodoAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/source/remote/api/TodoAPI.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/DataRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/data/UserRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ChoixListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ChoixListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/viewmodel/UserViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ShowListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp3/ui/main/ShowListActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +119,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.tp3.ui.main.viewmodel" />
       <recent name="com.example.tp1.data.source.remote" />
       <recent name="com.example.tp1.ui.main" />
       <recent name="com.example.tp1.adapter" />
@@ -240,10 +240,10 @@
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
     <state x="2059" y="-213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623416795873" />
-    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1623416228842">
+    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1623609356982">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623416228842" />
+    <state x="2114" y="-155" width="702" height="409" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623609356982" />
     <state x="1909" y="-205" key="AndroidCreateResourceFileDialog" timestamp="1623056595358">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
