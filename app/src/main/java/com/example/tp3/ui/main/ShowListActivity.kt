@@ -18,6 +18,13 @@ import kotlinx.coroutines.launch
 
 
 class ShowListActivity : AppCompatActivity(){
+    private var list_name: String? = null
+    private var id_list: String? = null
+    private var id_list_int: Int? = null
+    private var hash: String? = null
+    private var b: Button? = null
+    private var t: EditText? = null
+
     private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
@@ -26,12 +33,23 @@ class ShowListActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_list)
-        val list_name: String? = intent.getStringExtra("list")
-        this.title = "Items de $list_name"
-        val id_list: String? = intent.getStringExtra("id_list")
-        val id_list_int: Int? = id_list?.toInt()
-        val hash: String? = intent.getStringExtra("hash")
+        initializeVariables()
+        setUpRecyclerView()
 
+
+    }
+
+    fun initializeVariables(){
+        list_name = intent.getStringExtra("list")
+        id_list = intent.getStringExtra("id_list")
+        id_list_int = id_list?.toInt()
+        hash= intent.getStringExtra("hash")
+        b = findViewById<Button>(R.id.buttonOkChObject)
+        t = findViewById<EditText>(R.id.editTextObject)
+        this.title = "Items de $list_name"
+    }
+
+    fun setUpRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChObject)
         val items: MutableList<Item> = mutableListOf()
 
@@ -40,7 +58,6 @@ class ShowListActivity : AppCompatActivity(){
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
-
 
         //loadItems()
         activityScope.launch {
@@ -57,9 +74,6 @@ class ShowListActivity : AppCompatActivity(){
             recyclerView.visibility = View.VISIBLE
         }
 
-        val b=findViewById<Button>(R.id.buttonOkChObject)
-        val t=findViewById<EditText>(R.id.editTextObject)
-
         b.setOnClickListener {
             // add new item
             activityScope.launch {
@@ -74,7 +88,7 @@ class ShowListActivity : AppCompatActivity(){
                         adapter.addData(listReady)
                         //val lists = DataProvider.getListsFromApi(hash)
                         //adapter.addData(lists)
-                        t.setText("")
+                        t?.setText("")
                         recyclerView.visibility = View.VISIBLE
                     }
                 }catch(e: Exception){
@@ -83,6 +97,7 @@ class ShowListActivity : AppCompatActivity(){
             }
 
         }
+
     }
 }
 

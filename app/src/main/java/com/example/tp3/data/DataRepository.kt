@@ -9,6 +9,16 @@ class DataRepository(
     private val remoteDataSource: RemoteDataProvider
 ) {
 
+    ////////////// USER //////////////
+    suspend fun connexion(pseudo: String, pass: String): String{
+        return try{
+
+        }catch ()
+
+    }
+
+    ////////////// LIST //////////////
+
     suspend fun getLists(hash: String): List<com.example.tp3.data.model.List> {
         return try {
 
@@ -20,6 +30,8 @@ class DataRepository(
             localDataSource.getLists()
         }
     }
+
+    ////////////// ITEM //////////////
 
 
     companion object {
