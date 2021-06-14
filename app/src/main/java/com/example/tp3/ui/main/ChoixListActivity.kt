@@ -8,18 +8,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp3.R
-import com.example.tp3.data.DataProvider.createList
-import com.example.tp3.data.UserRepository
 import com.example.tp3.ui.main.adapter.AdapterList
 import com.example.tp3.ui.main.viewmodel.ListViewModel
-import com.example.tp3.ui.main.viewmodel.UserViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 
 class ChoixListActivity : AppCompatActivity(){
     private var pseudo: String? = null
@@ -72,23 +66,37 @@ class ChoixListActivity : AppCompatActivity(){
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         //loadLists()
-        activityScope.launch {
             recyclerView.visibility = View.GONE
             try{
                 if(hash!=null){
                     Toast.makeText(this@ChoixListActivity, "load lists", Toast.LENGTH_SHORT).show()
-                    val listes = DataProvider.getListsFromApi(hash)
+                    val listes=listViewModel.getListsUser(hash!!)
                     adapter!!.addData(listes)
+
+                    listViewModel.lists.observe(this) { viewState ->
+                        when (viewState) {
+                            is ListViewModel.ViewState.Content -> {
+                                adapter!!.show(viewState.lists)
+                                showProgress(false)
+                            }
+                            ListViewModel.ViewState.Loading -> showProgress(true)
+                            is ListViewModel.ViewState.Error -> {
+                                showProgress(false)
+                                Toast.makeText(this@ChoixListActivity, "${viewState.message} ", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+
+                    }
+
                 }
             }catch(e: Exception){
                 Toast.makeText(this@ChoixListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
             }
             recyclerView.visibility = View.VISIBLE
-        }
 
         b?.setOnClickListener {
             // to change --> with the user
-            activityScope.launch {
                 try{
                     Toast.makeText(this@ChoixListActivity, "For id user: $id_user", Toast.LENGTH_SHORT).show()
                     if(id_user_int!=null && hash!=null){
@@ -96,18 +104,34 @@ class ChoixListActivity : AppCompatActivity(){
                         val newListName = t?.text.toString()
                         Toast.makeText(this@ChoixListActivity, newListName, Toast.LENGTH_SHORT).show()
                         // add the new list
-                        val new_list = UserRepository.createList(id_user_int, newListName, hash)
+                        val new_list = listViewModel.mkListUser(id_user_int!!, newListName, hash!!)
+
                         val listReady : List<com.example.tp3.data.model.List> = listOf(new_list)
                         adapter!!.addData(listReady)
                         //val lists = DataProvider.getListsFromApi(hash)
                         //adapter.addData(lists)
                         t?.setText("")
                         recyclerView.visibility = View.VISIBLE
+
+                        listViewModel.lists.observe(this) { viewState ->
+                            when (viewState) {
+                                is ListViewModel.ViewState.Content -> {
+                                    adapter!!.show(viewState.lists)
+                                    showProgress(false)
+                                }
+                                ListViewModel.ViewState.Loading -> showProgress(true)
+                                is ListViewModel.ViewState.Error -> {
+                                    showProgress(false)
+                                    Toast.makeText(this@ChoixListActivity, "${viewState.message} ", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+                            }
+
+                        }
                     }
                 }catch (e: Exception){
                     Toast.makeText(this@ChoixListActivity, "${e.message}", Toast.LENGTH_SHORT).show()
                 }
-            }
 
         }
 
@@ -128,6 +152,13 @@ class ChoixListActivity : AppCompatActivity(){
             }
         })
 
+    }
+
+    private fun showProgress(show: Boolean) {
+        val progress = findViewById<View>(R.id.progressBarCh)
+        val list = findViewById<View>(R.id.RecyclerViewChListe)
+        progress.isVisible = show
+        list.isVisible = !show
     }
 
 

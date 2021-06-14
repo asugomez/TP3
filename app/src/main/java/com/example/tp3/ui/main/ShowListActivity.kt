@@ -64,40 +64,38 @@ class ShowListActivity : AppCompatActivity(){
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
 
         //loadItems()
-        activityScope.launch {
             recyclerView.visibility = View.GONE
             Toast.makeText(this@ShowListActivity, "load items", Toast.LENGTH_SHORT).show()
             try{
                 if(id_list_int!=null && hash!=null){
-                    val items = DataProvider.getItemsOfAList(id_list_int, hash)
+
+                    val items=itemViewModel.getItemsOfAList(id_list_int!!, hash!!)
                     adapter.addData(items)
                 }
             }catch(e: Exception){
                 Toast.makeText(this@ShowListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
             }
             recyclerView.visibility = View.VISIBLE
-        }
 
-        b.setOnClickListener {
+
+        b?.setOnClickListener {
             // add new item
-            activityScope.launch {
-                try{
-                    if(id_list_int!=null && hash!=null){
-                        recyclerView.visibility = View.GONE
-                        val labelItem = t.text.toString()
-                        Toast.makeText(this@ShowListActivity,labelItem, Toast.LENGTH_SHORT).show()
-                        // add the new list
-                        val newItem = DataProvider.createItem(id_list_int, labelItem, hash)
-                        val listReady : List<Item> = listOf(newItem)
-                        adapter.addData(listReady)
-                        //val lists = DataProvider.getListsFromApi(hash)
-                        //adapter.addData(lists)
-                        t?.setText("")
-                        recyclerView.visibility = View.VISIBLE
-                    }
-                }catch(e: Exception){
-                    Toast.makeText(this@ShowListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
+            try{
+                if(id_list_int!=null && hash!=null){
+                    recyclerView.visibility = View.GONE
+                    val labelItem = t?.text.toString()
+                    Toast.makeText(this@ShowListActivity,labelItem, Toast.LENGTH_SHORT).show()
+                    // add the new list
+                    val newItem = itemViewModel.mkItem(id_list_int!!, labelItem,null, hash!!)
+                    val listReady : List<Item> = listOf(newItem)
+                    adapter.addData(listReady)
+                    //val lists = DataProvider.getListsFromApi(hash)
+                    //adapter.addData(lists)
+                    t?.setText("")
+                    recyclerView.visibility = View.VISIBLE
                 }
+            }catch(e: Exception){
+                Toast.makeText(this@ShowListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
             }
 
         }

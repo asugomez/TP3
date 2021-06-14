@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp3.R
-import com.example.tp3.data.DataProvider.connexion
+import com.example.tp3.ui.main.viewmodel.ListViewModel
 import com.example.tp3.ui.main.viewmodel.UserViewModel
 
 
@@ -85,9 +85,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //Log.i("PMR", "clickok")
         Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
         //val l = sp.getString("login", "gf")
-        activityScope.launch {
             try{
-                val hash = connexion(Pseudo?.text.toString(),  Mdp?.text.toString())
+                val hash=userViewModel.connexion(Pseudo?.text.toString(),  Mdp?.text.toString())
+
                 if (!hash.isEmpty()) {
                     //Garder dans shared preferences
                     editor.putString("login", Pseudo?.text.toString())
@@ -110,7 +110,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             } catch (e: Exception){
                 Toast.makeText(this@MainActivity, "${e.message}", Toast.LENGTH_SHORT).show()
             }
-        }
     }
 
 }
