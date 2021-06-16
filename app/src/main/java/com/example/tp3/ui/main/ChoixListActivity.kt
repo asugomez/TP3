@@ -12,8 +12,14 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp3.R
+import com.example.tp3.data.ListRepository
+import com.example.tp3.data.UserRepository
 import com.example.tp3.ui.main.adapter.AdapterList
 import com.example.tp3.ui.main.viewmodel.ListViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 class ChoixListActivity : AppCompatActivity(){
     private var pseudo: String? = null
@@ -28,10 +34,13 @@ class ChoixListActivity : AppCompatActivity(){
     private var change: Intent? = null
 
     private val listViewModel by viewModels<ListViewModel>()
-    /*private val activityScope = CoroutineScope(
+
+    val listRepository by lazy { ListRepository.newInstance(application) }
+
+    private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
-    )*/
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -39,7 +48,7 @@ class ChoixListActivity : AppCompatActivity(){
     setContentView(R.layout.activity_choix_list)
     initializeVariables()
     setUpRecyclerView()
-
+    loadlistes()
 
     }
 
@@ -67,72 +76,28 @@ class ChoixListActivity : AppCompatActivity(){
 
         //loadLists()
             recyclerView.visibility = View.GONE
-            try{
-                if(hash!=null){
-                    Toast.makeText(this@ChoixListActivity, "load lists", Toast.LENGTH_SHORT).show()
-                    val listes=listViewModel.getListsUser(hash!!)
-                    adapter!!.addData(listes)
-
-                    listViewModel.lists.observe(this) { viewState ->
-                        when (viewState) {
-                            is ListViewModel.ViewState.Content -> {
-                                adapter!!.show(viewState.lists)
-                                showProgress(false)
-                            }
-                            ListViewModel.ViewState.Loading -> showProgress(true)
-                            is ListViewModel.ViewState.Error -> {
-                                showProgress(false)
-                                Toast.makeText(this@ChoixListActivity, "${viewState.message} ", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                        }
-
-                    }
-
-                }
-            }catch(e: Exception){
-                Toast.makeText(this@ChoixListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
-            }
+            loadlistes()
             recyclerView.visibility = View.VISIBLE
 
         b?.setOnClickListener {
-            // to change --> with the user
+            activityScope.launch {
                 try{
                     Toast.makeText(this@ChoixListActivity, "For id user: $id_user", Toast.LENGTH_SHORT).show()
                     if(id_user_int!=null && hash!=null){
                         recyclerView.visibility = View.GONE
                         val newListName = t?.text.toString()
                         Toast.makeText(this@ChoixListActivity, newListName, Toast.LENGTH_SHORT).show()
-                        // add the new list
-                        val new_list = listViewModel.mkListUser(id_user_int!!, newListName, hash!!)
-
+                        val new_list = listRepository.mkListUser(id_user_int!!, newListName, hash!!)
                         val listReady : List<com.example.tp3.data.model.List> = listOf(new_list)
                         adapter!!.addData(listReady)
-                        //val lists = DataProvider.getListsFromApi(hash)
-                        //adapter.addData(lists)
                         t?.setText("")
                         recyclerView.visibility = View.VISIBLE
-
-                        listViewModel.lists.observe(this) { viewState ->
-                            when (viewState) {
-                                is ListViewModel.ViewState.Content -> {
-                                    adapter!!.show(viewState.lists)
-                                    showProgress(false)
-                                }
-                                ListViewModel.ViewState.Loading -> showProgress(true)
-                                is ListViewModel.ViewState.Error -> {
-                                    showProgress(false)
-                                    Toast.makeText(this@ChoixListActivity, "${viewState.message} ", Toast.LENGTH_SHORT)
-                                        .show()
-                                }
-                            }
-
-                        }
                     }
-                }catch (e: Exception){
+
+                }catch (e:Exception){
                     Toast.makeText(this@ChoixListActivity, "${e.message}", Toast.LENGTH_SHORT).show()
                 }
-
+            }
         }
 
     }
@@ -152,6 +117,32 @@ class ChoixListActivity : AppCompatActivity(){
             }
         })
 
+    }
+
+    fun loadlistes() {
+        try{
+            if(hash!=null){
+                Toast.makeText(this@ChoixListActivity, "load lists", Toast.LENGTH_SHORT).show()
+                listViewModel.getListsUser(hash!!)
+                listViewModel.lists.observe(this) { viewState ->
+                    when (viewState) {
+                        is ListViewModel.ViewState.Content -> {
+                            showProgress(false)
+                        }
+                        ListViewModel.ViewState.Loading -> showProgress(true)
+                        is ListViewModel.ViewState.Error -> {
+                            showProgress(false)
+                            Toast.makeText(this@ChoixListActivity, "${viewState.message} ", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                }
+
+            }
+        }catch(e: Exception){
+            Toast.makeText(this@ChoixListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showProgress(show: Boolean) {

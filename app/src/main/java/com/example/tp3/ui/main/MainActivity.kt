@@ -13,8 +13,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp3.R
-import com.example.tp3.ui.main.viewmodel.ListViewModel
-import com.example.tp3.ui.main.viewmodel.UserViewModel
+import com.example.tp3.data.UserRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -24,12 +27,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var BtnOK: Button? = null
     private var Mdp: EditText? = null
 
-    private val userViewModel by viewModels<UserViewModel>()
+    val userRepository by lazy { UserRepository.newInstance(application) }
 
-    /*private val activityScope = CoroutineScope(
+    private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
-    )*/
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,13 +85,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun login(){
-        //Log.i("PMR", "clickok")
-        Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
-        //val l = sp.getString("login", "gf")
-            try{
-                val hash=userViewModel.connexion(Pseudo?.text.toString(),  Mdp?.text.toString())
-
-                if (!hash.isEmpty()) {
+        activityScope.launch {
+            try {
+                val hash = userRepository.connexion(Pseudo?.text.toString(),  Mdp?.text.toString())
+                if(hash.isNotEmpty())
+                {
                     //Garder dans shared preferences
                     editor.putString("login", Pseudo?.text.toString())
                     editor.commit()
@@ -104,12 +105,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     // todo
                     versSecondAct.putExtra("id_user", "1")
                     startActivity(versSecondAct)
-                } else {
-                    Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
                 }
-            } catch (e: Exception){
+                else
+                    Toast.makeText(this@MainActivity, "Erreur de Connection", Toast.LENGTH_SHORT).show()
+            }
+            catch (e:Exception)
+            {
                 Toast.makeText(this@MainActivity, "${e.message}", Toast.LENGTH_SHORT).show()
             }
+        }
     }
 
 }

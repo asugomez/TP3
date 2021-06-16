@@ -15,11 +15,6 @@ class AdapterList(private val dataset: MutableList<com.example.tp3.data.model.Li
     private var mOnItemClickListener: OnItemClickListener? = null
     private val lists: MutableList<Item> = mutableListOf()
 
-    fun show(l: kotlin.collections.List<List>) {
-        this.lists.addAll(l)
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ItemViewHolder(itemView = inflater.inflate(R.layout.list_list, parent, false))
