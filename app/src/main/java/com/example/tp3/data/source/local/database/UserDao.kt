@@ -1,7 +1,6 @@
 package com.example.tp3.data.source.local.database
 
 import androidx.room.*
-import com.example.tp3.data.model.Item
 import com.example.tp3.data.model.User
 
 /*
@@ -24,7 +23,7 @@ interface UserDao {
             "FROM user")
     suspend fun getUsers(): List<User>
 
-    @Query("INSERT INTO user(pseudo,pass)" +
+    @Query("INSERT INTO user(pseudo,pass) " +
             "VALUES(:pseudo, :pass)")
     suspend fun mkUser(pseudo: String, pass: String)
 

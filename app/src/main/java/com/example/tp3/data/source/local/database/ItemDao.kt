@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.tp3.data.model.Item
-import com.example.tp3.data.model.ItemResponse
 
 /*
 Data access objects (DAOs) that provide methods that your app can use to query, update, insert, and delete data in the database.
@@ -19,10 +18,10 @@ interface ItemDao {
     suspend fun getItems(): List<Item>
 
     @Query("SELECT * FROM item " +
-            "WHERE idList =:idList")
-    suspend fun getItemsOfAList(idList: Int): ItemResponse
+            "WHERE idList = :idList")
+    suspend fun getItemsOfAList(idList: Int): List<Item>
 
-    @Query("SELECT * FROM item" +
+    @Query("SELECT * FROM item " +
             "WHERE id = :idItem")
     suspend fun getItem(idItem: Int): Item
 

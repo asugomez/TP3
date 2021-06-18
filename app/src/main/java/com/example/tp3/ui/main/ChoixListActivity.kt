@@ -29,26 +29,22 @@ class ChoixListActivity : AppCompatActivity(){
     private var adapter: AdapterList? = null
     private var b: Button? = null
     private var t: EditText? = null
+    private var recyclerView: RecyclerView?= null
 
     private var lists: MutableList<com.example.tp3.data.model.List>? = null
     private var change: Intent? = null
 
     private val listViewModel by viewModels<ListViewModel>()
 
-    val listRepository by lazy { ListRepository.newInstance(application) }
-
-    private val activityScope = CoroutineScope(
-        SupervisorJob()
-                + Dispatchers.Main
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_choix_list)
-    initializeVariables()
-    setUpRecyclerView()
-    loadlistes()
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_choix_list)
+        initializeVariables()
+        setUpRecyclerView()
+        loadlistes()
+        changeToShowListActivity()
 
     }
 
@@ -62,43 +58,27 @@ class ChoixListActivity : AppCompatActivity(){
 
         b = findViewById<Button>(R.id.buttonOkChListe)
         t = findViewById<EditText>(R.id.editTextListe)
+        b?.setOnClickListener {
+            addList()
+        }
 
     }
 
     fun setUpRecyclerView(){
         lists = mutableListOf()
-        val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChListe)
+        recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChListe)
 
         adapter = AdapterList(lists!!)
 
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerView?.adapter = adapter
+        recyclerView?.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         //loadLists()
-            recyclerView.visibility = View.GONE
-            loadlistes()
-            recyclerView.visibility = View.VISIBLE
+        recyclerView?.visibility = View.GONE
+        loadlistes()
+        recyclerView?.visibility = View.VISIBLE
 
-        b?.setOnClickListener {
-            activityScope.launch {
-                try{
-                    Toast.makeText(this@ChoixListActivity, "For id user: $id_user", Toast.LENGTH_SHORT).show()
-                    if(id_user_int!=null && hash!=null){
-                        recyclerView.visibility = View.GONE
-                        val newListName = t?.text.toString()
-                        Toast.makeText(this@ChoixListActivity, newListName, Toast.LENGTH_SHORT).show()
-                        val new_list = listRepository.mkListUser(id_user_int!!, newListName, hash!!)
-                        val listReady : List<com.example.tp3.data.model.List> = listOf(new_list)
-                        adapter!!.addData(listReady)
-                        t?.setText("")
-                        recyclerView.visibility = View.VISIBLE
-                    }
 
-                }catch (e:Exception){
-                    Toast.makeText(this@ChoixListActivity, "${e.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
 
     }
 
@@ -143,6 +123,44 @@ class ChoixListActivity : AppCompatActivity(){
         }catch(e: Exception){
             Toast.makeText(this@ChoixListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun addList(){
+        try{
+            Toast.makeText(this@ChoixListActivity, "For id user: $id_user", Toast.LENGTH_SHORT).show()
+            if(id_user_int!=null && hash!=null){
+                recyclerView?.visibility = View.GONE
+                val newListName = t?.text.toString()
+                Toast.makeText(this@ChoixListActivity, newListName, Toast.LENGTH_SHORT).show()
+                listViewModel.mkListUser(id_user_int!!, newListName, hash!!)
+                listViewModel.getListsUser(hash!!)
+                listViewModel.lists.observe(this){ viewState ->
+                    when (viewState) {
+                        is ListViewModel.ViewState.Content -> {
+                            //adapter!!.addData()
+                            showProgress(false)
+                        }
+                        ListViewModel.ViewState.Loading -> showProgress(true)
+                        is ListViewModel.ViewState.Error -> {
+                            showProgress(false)
+                            Toast.makeText(this@ChoixListActivity, "${viewState.message} ", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                }
+
+                //val new_list = listRepository.mkListUser(id_user_int!!, newListName, hash!!)
+                //val listReady : List<com.example.tp3.data.model.List> = listOf(new_list)
+                //adapter!!.addData(listReady)
+                t?.setText("")
+                recyclerView?.visibility = View.VISIBLE
+            }
+
+        }catch (e:Exception){
+            Toast.makeText(this@ChoixListActivity, "${e.message}", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun showProgress(show: Boolean) {
