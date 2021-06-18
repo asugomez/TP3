@@ -18,8 +18,7 @@ interface ListDao {
     ////////////// LIST //////////////
     //todo: verifier si c'est list ou lists
 
-    @Query("SELECT l.id, l.idUser, l.label " +
-            "FROM list l INNER JOIN user u ON l.idUser = u.id")
+    @Query("SELECT * from list ")
     suspend fun getLists(): ListResponse
 
     @Query("SELECT l.id, l.idUser, l.label FROM list l " +
