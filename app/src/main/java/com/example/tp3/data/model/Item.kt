@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName
 @Entity
 data class Item(
     @PrimaryKey val id: Int,
-    @ColumnInfo(name="idList") val id_list: Int, //@UniqueKey
-    @ColumnInfo(name="label") val label: String,
-    @ColumnInfo(name="checked") val checked: Int,
-    @ColumnInfo(name="url") val url: String?
+    val idList: Int, //@UniqueKey
+    val label: String,
+    val checked: Int,
+    val url: String?
 )
 
 

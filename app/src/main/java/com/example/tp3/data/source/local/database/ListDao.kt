@@ -18,15 +18,15 @@ interface ListDao {
     ////////////// LIST //////////////
     //todo: verifier si c'est list ou lists
 
-    @Query("SELECT l.id, l.label, u.pseudo " +
+    @Query("SELECT l.id, l.idUser, l.label " +
             "FROM list l INNER JOIN user u ON l.idUser = u.id")
     suspend fun getLists(): ListResponse
 
-    @Query("SELECT l.id, l.label FROM list l " +
+    @Query("SELECT l.id, l.idUser, l.label FROM list l " +
             "WHERE l.id = :idList")
     suspend fun getList(idList: Int): com.example.tp3.data.model.List
 
-    @Query("SELECT l.id, l.label FROM list l " +
+    @Query("SELECT l.id, l.idUSer, l.label FROM list l " +
             "INNER JOIN user u ON l.idUser = u.id" +
             "WHERE u.hash = :hash")
     suspend fun getListsUser(hash: String): ListResponse
