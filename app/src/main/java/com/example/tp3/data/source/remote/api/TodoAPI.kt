@@ -20,7 +20,7 @@ interface TodoAPI {
     @POST("users")
     suspend fun mkUser(@Query("pseudo") pseudo: String,
                         @Query("pass") pass: String,
-                        @Header("hash")hash: String): User
+                        @Header("hash")hash: String)
 
     ////////////// LIST //////////////
 
@@ -36,7 +36,7 @@ interface TodoAPI {
     @POST("users/{id}/lists")
     suspend fun mkListUser(@Path("id")id: Int,
                            @Query("label")label:String,
-                           @Header("hash")hash: String): List
+                           @Header("hash")hash: String)
 
     @DELETE("users/{idUser}/lists/{idList}")
     suspend fun rmListUser(@Path("idUser") id_user: Int,
@@ -66,7 +66,7 @@ interface TodoAPI {
     suspend fun mkItem(@Path("id_list")id_list: Int,
                            @Query("label") label: String,
                             @Query("url") url: String? = null,
-                           @Header("hash")hash: String): Item
+                           @Header("hash")hash: String)
 
     @DELETE("lists/{idList}/items/{idItem}")
     suspend fun rmItem(@Path("idList") id_list: Int,

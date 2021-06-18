@@ -37,7 +37,7 @@ class ListRepository(
         }
     }
 
-    suspend fun mkListUser(idUser: Int, label: String, hash: String): com.example.tp3.data.model.List{
+    suspend fun mkListUser(idUser: Int, label: String, hash: String){
         return try{
             remoteDataSource.mkListUser(idUser, label, hash).also {
                 localDataSource.saveOrUpdateList(remoteDataSource.getListsUser(hash))

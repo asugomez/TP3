@@ -11,22 +11,22 @@ Data access objects (DAOs) that provide methods that your app can use to query, 
 interface UserDao {
 
     ////////////// USER //////////////
-    @Query("SELECT hash FROM users " +
+    @Query("SELECT hash FROM user " +
             "WHERE pseudo=:pseudo AND pass=:password")
     suspend fun connexion(pseudo: String, password: String): String
     // return a hash
 
-    @Query("SELECT id FROM users " +
+    @Query("SELECT id FROM user " +
             "WHERE hash=:hash")
     suspend fun hash2id(hash:String): Int
 
     @Query("SELECT * " +
-            "FROM users")
+            "FROM user")
     suspend fun getUsers(): List<User>
 
-    @Query("INSERT INTO users(pseudo,pass)" +
+    @Query("INSERT INTO user(pseudo,pass)" +
             "VALUES(:pseudo, :pass)")
-    suspend fun mkUser(pseudo: String, pass: String): User
+    suspend fun mkUser(pseudo: String, pass: String)
 
     @Insert
     fun insertAllUsers(vararg users: User)

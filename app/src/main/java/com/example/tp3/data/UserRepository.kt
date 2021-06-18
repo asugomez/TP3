@@ -44,7 +44,7 @@ class UserRepository(
         }
     }
 
-    suspend fun mkUser(pseudo: String, pass: String, hash: String): User{
+    suspend fun mkUser(pseudo: String, pass: String, hash: String){
         return try{
             remoteDataSource.mkUser(pseudo, pass, hash).also {
                 localDataSource.saveOrUpdateUsers(remoteDataSource.getUsers(hash))

@@ -19,27 +19,27 @@ interface ListDao {
     //todo: verifier si c'est list ou lists
 
     @Query("SELECT l.id, l.label, u.pseudo " +
-            "FROM lists l INNER JOIN users u ON l.idUser = u.id")
+            "FROM list l INNER JOIN user u ON l.idUser = u.id")
     suspend fun getLists(): ListResponse
 
-    @Query("SELECT l.id, l.label FROM lists l " +
+    @Query("SELECT l.id, l.label FROM list l " +
             "WHERE l.id = :idList")
     suspend fun getList(idList: Int): com.example.tp3.data.model.List
 
-    @Query("SELECT l.id, l.label FROM lists l " +
+    @Query("SELECT l.id, l.label FROM list l " +
             "INNER JOIN user u ON l.idUser = u.id" +
             "WHERE u.hash = :hash")
     suspend fun getListsUser(hash: String): ListResponse
 
-    @Query("INSERT INTO lists(idUser, label) " +
+    @Query("INSERT INTO list(idUser, label) " +
             "VALUES(:id_user, :label)")
-    suspend fun mkListUser(id_user: Int, label: String): com.example.tp3.data.model.List
+    suspend fun mkListUser(id_user: Int, label: String)
 
-    @Query("DELETE FROM lists WHERE id=:idList" +
+    @Query("DELETE FROM list WHERE id=:idList" +
             "")
     suspend fun rmListUser(idList: Int): Int
 
-    @Query("UPDATE lists SET label=:label" +
+    @Query("UPDATE list SET label=:label" +
             " WHERE id=:idList")
     suspend fun chgListLabel(label: String, idList: Int)
 
