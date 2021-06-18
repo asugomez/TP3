@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp3.R
+import com.example.tp3.data.model.Item
 import com.example.tp3.data.model.List
 
 
 class AdapterList(private val dataset: MutableList<com.example.tp3.data.model.List>): RecyclerView.Adapter<AdapterList.ItemViewHolder>()  {
 
     private var mOnItemClickListener: OnItemClickListener? = null
+    private val lists: MutableList<Item> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)

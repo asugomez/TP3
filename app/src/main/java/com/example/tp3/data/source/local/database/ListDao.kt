@@ -5,9 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.tp3.data.model.Item
-import com.example.tp3.data.model.ListResponse
-import com.example.tp3.data.model.User
 
 /*
 Data access objects (DAOs) that provide methods that your app can use to query, update, insert, and delete data in the database.
@@ -18,28 +15,27 @@ interface ListDao {
     ////////////// LIST //////////////
     //todo: verifier si c'est list ou lists
 
-    @Query("SELECT l.id, l.label, u.pseudo " +
-            "FROM lists l INNER JOIN users u ON l.idUser = u.id")
-    suspend fun getLists(): ListResponse
+    @Query("SELECT * from list ")
+    suspend fun getLists(): List<com.example.tp3.data.model.List>
 
-    @Query("SELECT l.id, l.label FROM lists l " +
+    @Query("SELECT l.id, l.idUser, l.label FROM list l " +
             "WHERE l.id = :idList")
     suspend fun getList(idList: Int): com.example.tp3.data.model.List
 
-    @Query("SELECT l.id, l.label FROM lists l " +
-            "INNER JOIN user u ON l.idUser = u.id" +
+    @Query("SELECT l.id, l.idUSer, l.label FROM list l " +
+            "INNER JOIN user u ON l.idUser = u.id " +
             "WHERE u.hash = :hash")
-    suspend fun getListsUser(hash: String): ListResponse
+    suspend fun getListsUser(hash: String): List<com.example.tp3.data.model.List>
 
-    @Query("INSERT INTO lists(idUser, label) " +
+    @Query("INSERT INTO list(idUser, label) " +
             "VALUES(:id_user, :label)")
-    suspend fun mkListUser(id_user: Int, label: String): com.example.tp3.data.model.List
+    suspend fun mkListUser(id_user: Int, label: String)
 
-    @Query("DELETE FROM lists WHERE id=:idList" +
+    @Query("DELETE FROM list WHERE id=:idList" +
             "")
     suspend fun rmListUser(idList: Int): Int
 
-    @Query("UPDATE lists SET label=:label" +
+    @Query("UPDATE list SET label=:label" +
             " WHERE id=:idList")
     suspend fun chgListLabel(label: String, idList: Int)
 

@@ -40,7 +40,7 @@ class ItemRepository(
         }
     }
 
-    suspend fun mkItem(id_list: Int, label: String, url: String? = null, hash: String): Item {
+    suspend fun mkItem(id_list: Int, label: String, url: String? = null, hash: String){
         return try{
             remoteDataSource.mkItem(id_list, label, url, hash) .also{
                 localDataSource.saveOrUpdateItems(remoteDataSource.getItemsOfAList(id_list, hash))

@@ -13,6 +13,13 @@ class AdapterItem(private val dataset: MutableList<Item>): RecyclerView.Adapter<
     val checkStatus: HashMap<Int, Boolean> = HashMap() // store the check status for all checkboxes
     val CAT: String = "TODO_ITEM"
 
+    private val items: MutableList<Item> = mutableListOf()
+
+    fun show(items: List<Item>) {
+        this.items.addAll(items)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ItemViewHolder(itemView = inflater.inflate(R.layout.list, parent, false))

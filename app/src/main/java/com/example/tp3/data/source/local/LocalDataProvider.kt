@@ -5,8 +5,6 @@ import androidx.room.Room
 import com.example.tp3.data.model.Item
 import com.example.tp3.data.model.User
 import com.example.tp3.data.source.local.database.TodoRoomDatabase
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class LocalDataProvider(
     application: Application
@@ -37,11 +35,11 @@ class LocalDataProvider(
 
     ////////////// LIST //////////////
 
-    suspend fun getLists() = listDao.getLists().lists
+    suspend fun getLists() = listDao.getLists()
 
     suspend fun getList(idList: Int) = listDao.getList(idList)
 
-    suspend fun getListsUser(hash: String) = listDao.getListsUser(hash).lists
+    suspend fun getListsUser(hash: String) = listDao.getListsUser(hash)
 
     suspend fun mkListUser(id_user: Int, label: String) = listDao.mkListUser(id_user, label)
 
@@ -55,7 +53,7 @@ class LocalDataProvider(
 
     suspend fun getItems() = itemDao.getItems()
 
-    suspend fun getItemsOfAList(idList: Int) = itemDao.getItemsOfAList(idList).items
+    suspend fun getItemsOfAList(idList: Int) = itemDao.getItemsOfAList(idList)
 
     suspend fun getItem(idItem: Int) = itemDao.getItem(idItem)
 

@@ -41,8 +41,9 @@ class RemoteDataProvider {
         return service.getUsers(hash).users
     }
 
-    suspend fun mkUser(pseudo: String, pass: String, hash: String): User{
+    suspend fun mkUser(pseudo: String, pass: String, hash: String){
         return service.mkUser(pseudo, pass, hash)
+
     }
 
     ////////////// LIST //////////////
@@ -55,8 +56,9 @@ class RemoteDataProvider {
         return service.getListsUser(hash).lists
     }
 
-    suspend fun mkListUser(id_user: Int, label: String, hash:String): com.example.tp3.data.model.List{
+    suspend fun mkListUser(id_user: Int, label: String, hash:String){
         return service.mkListUser(id_user, label, hash)
+
     }
 
     suspend fun rmListUser(id_user: Int, id_list: Int, hash: String): Int{
@@ -78,8 +80,9 @@ class RemoteDataProvider {
         return service.getItem(id_item, id_list, hash)
     }
 
-    suspend fun mkItem(id_list: Int, label: String, url: String? = null, hash: String): Item {
+    suspend fun mkItem(id_list: Int, label: String, url: String? = null, hash: String){
         return service.mkItem(id_list,label, url, hash)
+
     }
 
     suspend fun rmItem(id_list: Int, id_item: Int, hash: String): Int{
