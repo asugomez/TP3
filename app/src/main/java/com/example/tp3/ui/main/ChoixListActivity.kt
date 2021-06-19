@@ -53,7 +53,6 @@ class ChoixListActivity : AppCompatActivity(){
         setUpRecyclerView()
         loadlistes()
         changeToShowListActivity()
-
     }
 
 
@@ -68,6 +67,17 @@ class ChoixListActivity : AppCompatActivity(){
 
         b = findViewById<Button>(R.id.buttonOkChListe)
         t = findViewById<EditText>(R.id.editTextListe)
+        activityScope.launch {
+            try {
+                if(id_user_int!=null && hash!=null){
+                    val lists= listRepository.getListsUser(hash!!)
+                    adapter!!.addData(lists)
+                }
+
+            }catch (e:Exception){
+                Toast.makeText(this@ChoixListActivity, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
         b?.setOnClickListener {
             addList()
         }
