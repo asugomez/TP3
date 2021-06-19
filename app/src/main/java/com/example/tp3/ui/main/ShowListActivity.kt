@@ -84,11 +84,15 @@ class ShowListActivity : AppCompatActivity(){
                         val labelItem = t?.text.toString()
                         Toast.makeText(this@ShowListActivity,labelItem, Toast.LENGTH_SHORT).show()
                         // add the new list
-                        //val newItem = itemRepository.mkItem(id_list_int!!, labelItem,null, hash!!)
-                        //val listReady : List<Item> = listOf(newItem)
-                        //adapter.addData(listReady)
-                        //val lists = DataProvider.getListsFromApi(hash)
-                        //adapter.addData(lists)
+
+
+
+                        itemRepository.mkItem(id_list_int!!, labelItem,null, hash!!)
+
+                        val lists= itemRepository.getItemsOfAList(id_list_int!!,hash!!)
+                        adapter.addData(lists)
+
+
                         t?.setText("")
                         recyclerView.visibility = View.VISIBLE
                     }
