@@ -53,4 +53,6 @@ class AdapterList(private val dataset: MutableList<com.example.tp3.data.model.Li
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
+
+
 }
